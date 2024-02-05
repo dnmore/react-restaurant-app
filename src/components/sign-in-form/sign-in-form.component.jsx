@@ -3,7 +3,7 @@ import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebas
 
 import FormInput from "../../components/form-input/form-input.component";
 
-import './sign-in-form.styles.scss'
+import "./sign-in-form.styles.scss";
 
 const initialFormFields = {
   email: "",
@@ -14,8 +14,6 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(initialFormFields);
   const { email, password } = formFields;
 
-  console.log(formFields);
-
   const resetFormFields = () => {
     setFormFields(initialFormFields);
   };
@@ -24,12 +22,7 @@ const SignInForm = () => {
     e.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      console.log(response);
+      await signInAuthUserWithEmailAndPassword(email, password);
 
       resetFormFields();
     } catch (error) {
